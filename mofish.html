@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微信整蛊程序</title>
+    <style>
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            border: 2px solid #000;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .popup button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .popup .message {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<button onclick="showPopup()">点击接受摸鱼邀请</button>
+
+<div class="popup" id="popup">
+    <p>您的队友发来一条摸鱼邀请~</p>
+    <button id="agreeButton" onclick="acceptInvitation()">同意组队</button>
+    <button id="declineButton" onmouseover="moveButton()">拒绝组队</button>
+    <div class="message" id="message"></div>
+</div>
+
+<script>
+    function showPopup() {
+        document.getElementById("popup").style.display = "block";
+    }
+
+    function acceptInvitation() {
+        document.getElementById("message").innerText = "接下来一起愉快的摸鱼吧~";
+    }
+
+    function moveButton() {
+        const button = document.getElementById("declineButton");
+        const popup = document.getElementById("popup");
+
+        const maxX = popup.offsetWidth - button.offsetWidth;
+        const maxY = popup.offsetHeight - button.offsetHeight;
+
+        const randomX = Math.random() * maxX;
+        const randomY = Math.random() * maxY;
+
+        button.style.position = "absolute";
+        button.style.left = randomX + "px";
+        button.style.top = randomY + "px";
+    }
+</script>
+
+</body>
+</html>
